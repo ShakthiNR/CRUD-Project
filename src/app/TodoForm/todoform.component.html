@@ -1,3 +1,3 @@
-<input type="text" placeholder="Enter task name" [(ngModel)]="taskName" />
-<input type="text" placeholder="Enter task description" [(ngModel)]="taskDescription" />
+<input type="text" placeholder="Enter task name" [(ngModel)]="todoForm.taskName"  />
+<input type="text" placeholder="Enter task description" [(ngModel)]="todoForm.taskDescription"  />
 <button type="submit" (click)="addTodos()">Add Task</button>

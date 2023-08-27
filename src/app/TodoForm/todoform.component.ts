@@ -1,35 +1,23 @@
-import {Component, Input} from "@angular/core"
-import { ITodo } from "../types"
+import { TodosService } from './../service/todos.service';
+import { Component, Input } from "@angular/core"
+import { ITodo, ITodoForm } from "../types"
 
 @Component({
-    selector:"app-todo-form",
-    templateUrl:"./todoform.component.html",
-    styleUrls:["./todoform.component.css"]    
+    selector: "app-todo-form",
+    templateUrl: "./todoform.component.html",
+    styleUrls: ["./todoform.component.css"]
 })
-export class TodoFormComponent{
+export class TodoFormComponent {
+
+   
+    todos: ITodo[] = this.TodosService.getTodos
+    todoForm:ITodoForm = this.TodosService.getTodoForm
+
+    constructor(private TodosService: TodosService) {}
+
+    addTodos() {
+        this.TodosService.addTodos()
+    }
+
     
-    @Input() taskName:string
-    @Input() taskDescription:string
-    @Input() todos:ITodo[]
-
-    constructor(){
-        this.taskName = ""
-        this.taskDescription = ""
-        this.todos = []
-    }
-
-
-    addTodos(){
-        const newTodo:ITodo = {
-            name: this.taskName,
-            description: this.taskDescription,
-            id: new Date().toString()
-        }
-        console.log("Called ..", newTodo, this.todos)
-        this.todos.push(newTodo)
-        localStorage.setItem('todos', JSON.stringify(this.todos))
-      
-        this.taskName = ""
-        this.taskDescription = ""
-    }
 }

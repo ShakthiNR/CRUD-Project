@@ -1,7 +1,7 @@
 <h1>{{appTitle}}</h1>
 
-<app-todo-form [taskName]="taskName" [taskDescription]="taskDescription"  [todos]="todos"></app-todo-form>
+<app-todo-form></app-todo-form>
 
-<app-todo-lists [todoLists]="todos">
+<app-todo-lists >
     <p class="todo-count"> Task count : {{ todos ? todos.length : 0}} </p>
 </app-todo-lists>

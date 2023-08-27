@@ -1,3 +1,4 @@
+import { TodosService } from './../service/todos.service';
 import { Component, Input } from '@angular/core';
 import { ITodo } from '../types';
 
@@ -7,15 +8,15 @@ import { ITodo } from '../types';
     styleUrls: ["./todolists.component.css"]
 })
 export class TodoListsComponent {
-    constructor() { }
+    todoLists:ITodo[]
 
-    @Input() todoLists: ITodo[] = [];
 
-    deleteTodo(id: string) {
-        const findTodos = this.todoLists.findIndex(elm => elm.id === id)
-        if (findTodos !== -1) {
-            this.todoLists.splice(findTodos, 1)
-            localStorage.setItem('todos', JSON.stringify(this.todoLists))
-        }
-    }
+    constructor(private TodosService:TodosService) {
+        this.todoLists = TodosService.todos
+     }
+
+     deleteTodo(todoId:string) {
+        this.TodosService.deleteTodo(todoId)
+     }
+
 }

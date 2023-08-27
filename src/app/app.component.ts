@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { TodosService } from './service/todos.service';
+import { Component } from '@angular/core';
 import { ITodo } from './types';
 
 @Component({
@@ -6,20 +7,11 @@ import { ITodo } from './types';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   appTitle: string = 'Task Management';
-
-  taskName: string = '';
-  taskDescription: string = "";
-
-  todos: ITodo[] = []
-
-
-
-  ngOnInit(): void {
-    const getTodos = localStorage.getItem("todos")
-    if (getTodos)
-      this.todos = JSON.parse(getTodos);
-  }
+ 
+  constructor(private TodosService:TodosService){}
+  
+  todos:ITodo[] = this.TodosService.getTodos
 
 }
