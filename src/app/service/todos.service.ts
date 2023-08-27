@@ -1,25 +1,25 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ITodo, ITodoForm } from '../types';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TodosService implements OnInit {
+export class TodosService {
 
   todos: ITodo[] = []
-  todoForm:ITodoForm ={
+  todoForm: ITodoForm = {
     taskName: "",
     taskDescription: ""
   }
-  
 
-  constructor() { }
 
-  ngOnInit(): void {
+  constructor() {
     const getTodos = localStorage.getItem("todos")
-    if (getTodos)
-      this.todos = JSON.parse(getTodos);
+    if (getTodos) {
+      this.todos = JSON.parse(getTodos)
+    }
   }
+
 
   get getTodos(): ITodo[] {
     return this.todos
@@ -29,7 +29,7 @@ export class TodosService implements OnInit {
     return this.todoForm
   }
 
- 
+
   deleteTodo(id: string) {
     const findTodos = this.todos.findIndex(elm => elm.id === id)
     if (findTodos !== -1) {
@@ -38,15 +38,14 @@ export class TodosService implements OnInit {
     }
   }
 
-  addTodos() {
-    console.log("Check ans ", this.todoForm.taskDescription, this.todoForm.taskName)
+  addTodo() {
+
     const newTodo: ITodo = {
       name: this.todoForm.taskName,
       description: this.todoForm.taskDescription,
       id: new Date().toString()
     }
 
-    console.log("New Todo", newTodo)
     this.todos.push(newTodo)
     localStorage.setItem('todos', JSON.stringify(this.todos))
 

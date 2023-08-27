@@ -1,5 +1,5 @@
 import { TodosService } from './../service/todos.service';
-import { Component, Input } from "@angular/core"
+import { Component } from "@angular/core"
 import { ITodo, ITodoForm } from "../types"
 
 @Component({
@@ -7,7 +7,7 @@ import { ITodo, ITodoForm } from "../types"
     templateUrl: "./todoform.component.html",
     styleUrls: ["./todoform.component.css"]
 })
-export class TodoFormComponent {
+export class TodoFormComponent  {
 
    
     todos: ITodo[] = this.TodosService.getTodos
@@ -16,8 +16,7 @@ export class TodoFormComponent {
     constructor(private TodosService: TodosService) {}
 
     addTodos() {
-        this.TodosService.addTodos()
+        this.TodosService.addTodo()
     }
 
-    
 }

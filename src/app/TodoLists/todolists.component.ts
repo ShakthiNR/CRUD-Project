@@ -1,5 +1,5 @@
 import { TodosService } from './../service/todos.service';
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ITodo } from '../types';
 
 @Component({
