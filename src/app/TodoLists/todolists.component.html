@@ -1,0 +1,10 @@
+<h2>List of tasks</h2>
+<ng-content select=".todo-count"></ng-content>
+
+<div *ngFor="let todo of todoLists">
+    <div>
+        <span> {{ todo.name}} </span>
+        <span> {{todo.description }}</span>
+        <button (click)="deleteTodo(todo.id)">Delete</button>
+    </div>
+</div>
