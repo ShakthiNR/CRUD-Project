@@ -12,8 +12,15 @@ export class TodoFormComponent  {
    
     todos: ITodo[] = this.TodosService.getTodos
     todoForm:ITodoForm = this.TodosService.getTodoForm
+    isUpdate: boolean
 
-    constructor(private TodosService: TodosService) {}
+    constructor(private TodosService: TodosService) {
+        this.isUpdate = this.TodosService.getIsUpdate()
+    }
+
+    clearThisForm(){
+        this.TodosService.clearForm()
+    }
 
     addTodos() {
         this.TodosService.addTodo()

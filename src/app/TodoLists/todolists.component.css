@@ -1,0 +1,14 @@
+.close-btn{
+    border: none;
+    background-color: transparent;
+    color: red ;
+    margin: 0 1rem;
+    cursor: pointer;
+}
+
+.update-btn{
+    border: none;
+    background-color: transparent;
+    color: blue ;
+    cursor: pointer;
+}

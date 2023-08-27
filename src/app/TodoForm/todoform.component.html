@@ -1,3 +1,15 @@
-<input type="text" placeholder="Enter task name" [(ngModel)]="todoForm.taskName"  />
-<input type="text" placeholder="Enter task description" [(ngModel)]="todoForm.taskDescription"  />
-<button type="submit" (click)="addTodos()">Add Task</button>
+
+<div class="flex-center" style="flex-direction: column;">
+    <div class="todo-form">
+        <input type="text" placeholder="Enter task name" [(ngModel)]="todoForm.taskName" />
+        <input type="text" placeholder="Enter task description" [(ngModel)]="todoForm.taskDescription" style="margin-left: 1rem;" />
+    </div>
+    
+    <div>
+        <button type="submit" (click)="addTodos()" class="add-btn"> {{ isUpdate ? "Update Task" : "Add Task"}}</button>
+    
+        <span *ngIf="todoForm.taskName || todoForm.taskDescription">
+            <button (click)="clearThisForm()" class="clear-btn"> Clear Form</button>
+        </span>
+    </div>
+</div>

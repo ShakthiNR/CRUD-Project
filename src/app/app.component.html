@@ -1,7 +1,16 @@
-<h1>{{appTitle}}</h1>
+<div class="title flex-center">
+    <h1>{{appTitle}}</h1> <div style="align-self: flex-end; padding-bottom: 0.25rem;"> &nbsp; (angular) </div> 
+</div>
 
-<app-todo-form></app-todo-form>
+<div style="height: 85vh; overflow: scroll;">
+    <app-todo-form></app-todo-form>
 
-<app-todo-lists >
-    <p class="todo-count"> Task count : {{ todos ? todos.length : 0}} </p>
-</app-todo-lists>
+    <app-todo-lists>
+        <p class="todo-count"> Task count : {{ todos ? todos.length : 0}} </p>
+    </app-todo-lists>
+</div>
+
+
+<div class="footer">
+    Created By :: {{creator}} - {{copyright}}
+</div>

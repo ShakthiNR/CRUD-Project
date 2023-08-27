@@ -1,0 +1,11 @@
+.title{
+    text-align: center;
+    background-color: lightblue;
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
+.footer{
+    background-color: lightgray;
+    text-align: center;
+}

@@ -11,6 +11,7 @@ export class TodosService {
     taskName: "",
     taskDescription: ""
   }
+  private isUpdate: boolean = false
 
 
   constructor() {
@@ -20,6 +21,16 @@ export class TodosService {
     }
   }
 
+  setIsUpdate(isUpdate: boolean): void {
+    this.isUpdate = isUpdate
+    this.getIsUpdate()
+  }
+
+
+  getIsUpdate(): boolean {
+    console.log("ss", this.isUpdate)
+    return this.isUpdate
+  }
 
   get getTodos(): ITodo[] {
     return this.todos
@@ -28,6 +39,14 @@ export class TodosService {
   get getTodoForm() {
     return this.todoForm
   }
+
+ 
+
+
+  clearForm(){
+    this.todoForm.taskName=""
+    this.todoForm.taskDescription=""
+}
 
 
   deleteTodo(id: string) {
@@ -40,6 +59,11 @@ export class TodosService {
 
   addTodo() {
 
+    if(!this.todoForm.taskName || !this.todoForm.taskName){
+      alert("Task name or task description cannot be empty")
+      return
+    }
+
     const newTodo: ITodo = {
       name: this.todoForm.taskName,
       description: this.todoForm.taskDescription,
@@ -51,6 +75,15 @@ export class TodosService {
 
     this.todoForm.taskName = ""
     this.todoForm.taskDescription = ""
+  }
+
+
+  updateTodo(todoId: string){
+    const findTodo = this.todos.findIndex(elm => elm.id === todoId)
+    if(findTodo !== -1){
+      this.todoForm.taskName = this.todos[findTodo].name
+      this.todoForm.taskDescription = this.todos[findTodo].description
+    }
   }
 
 }

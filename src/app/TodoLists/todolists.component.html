@@ -1,10 +1,22 @@
-<h2>List of tasks</h2>
-<ng-content select=".todo-count"></ng-content>
+<div class="flex-center" *ngIf="todoLists.length">
+    <h2>List of tasks</h2>
+</div>
 
-<div *ngFor="let todo of todoLists">
-    <div>
-        <span> {{ todo.name}} </span>
-        <span> {{todo.description }}</span>
-        <button (click)="deleteTodo(todo.id)">Delete</button>
+<div  style="max-width: 80vh; margin:0 auto; padding: 1rem;height: 60vh; overflow: scroll;" *ngIf="todoLists.length">
+    <ng-content select=".todo-count"></ng-content>
+    <div style="background-color: lightgrey;" >
+        <div *ngFor="let todo of todoLists; let i = index">
+            <div style="padding:0.5rem">
+                <span>{{ i +1 }})</span>
+                <span> {{ todo.name}} </span>
+                <span> {{ todo.description }}</span>
+                <button (click)="deleteTodo(todo.id)" class="close-btn">X</button>
+                <button (click)="updateTodo(todo.id)" class="update-btn">E</button>
+            </div>
+        </div> 
     </div>
+</div>
+
+<div *ngIf="todoLists.length === 0"  class="flex-center" style="margin:1rem">
+    Please Add tasks to the list
 </div>

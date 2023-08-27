@@ -9,6 +9,9 @@ import { ITodo } from './types';
 })
 export class AppComponent {
   appTitle: string = 'Task Management';
+
+  creator:string = 'Shakthi N R';
+  copyright:string = '@2023'
  
   constructor(private TodosService:TodosService){}
   

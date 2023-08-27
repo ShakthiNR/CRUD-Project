@@ -1,5 +1,5 @@
 import { TodosService } from './../service/todos.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ITodo } from '../types';
 
 @Component({
@@ -17,6 +17,11 @@ export class TodoListsComponent {
 
      deleteTodo(todoId:string) {
         this.TodosService.deleteTodo(todoId)
+     }
+
+     updateTodo(todoId:string) {
+        this.TodosService.updateTodo(todoId)
+        this.TodosService.setIsUpdate(true)
      }
 
 }
