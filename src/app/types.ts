@@ -4,7 +4,6 @@ export interface ITodo{
     description: string;
 }
 
-
 export interface ITodoForm {
     taskName: string;
     taskDescription: string;

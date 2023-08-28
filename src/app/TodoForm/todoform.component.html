@@ -6,7 +6,7 @@
     </div>
     
     <div>
-        <button type="submit" (click)="addTodos()" class="add-btn"> {{ isUpdate ? "Update Task" : "Add Task"}}</button>
+        <button type="submit" (click)="isThisUpdateId ? updateTodo() :addTodos()" class="add-btn"> {{ isThisUpdateId ? "Update Task" : "Add Task"}}</button>
     
         <span *ngIf="todoForm.taskName || todoForm.taskDescription">
             <button (click)="clearThisForm()" class="clear-btn"> Clear Form</button>

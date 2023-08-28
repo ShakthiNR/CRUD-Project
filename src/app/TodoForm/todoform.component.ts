@@ -1,5 +1,5 @@
 import { TodosService } from './../service/todos.service';
-import { Component } from "@angular/core"
+import { Component, DoCheck } from "@angular/core"
 import { ITodo, ITodoForm } from "../types"
 
 @Component({
@@ -7,17 +7,21 @@ import { ITodo, ITodoForm } from "../types"
     templateUrl: "./todoform.component.html",
     styleUrls: ["./todoform.component.css"]
 })
-export class TodoFormComponent  {
+export class TodoFormComponent implements  DoCheck   {
 
-   
     todos: ITodo[] = this.TodosService.getTodos
     todoForm:ITodoForm = this.TodosService.getTodoForm
-    isUpdate: boolean
+    isThisUpdateId: string | undefined
 
-    constructor(private TodosService: TodosService) {
-        this.isUpdate = this.TodosService.getIsUpdate()
+    constructor(private TodosService: TodosService) { }
+
+    ngDoCheck(): void {
+        if(this.TodosService.getUpdateId() !== this.isThisUpdateId) {
+            this.isThisUpdateId = this.TodosService.getUpdateId();
+        }
     }
 
+    // For every operation we call fn in the TodosService
     clearThisForm(){
         this.TodosService.clearForm()
     }
@@ -26,4 +30,7 @@ export class TodoFormComponent  {
         this.TodosService.addTodo()
     }
 
+    updateTodo(){
+        this.TodosService.updateTodo()
+    }
 }

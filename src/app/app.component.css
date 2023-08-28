@@ -5,6 +5,14 @@
     font-size: 1.1rem;
 }
 
+.clear-btn{
+    border:none;
+    background-color: red;
+    color: #fff;
+    padding: 0.25rem;
+    cursor: pointer;
+}
+
 .footer{
     background-color: lightgray;
     text-align: center;

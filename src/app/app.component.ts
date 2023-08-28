@@ -17,4 +17,8 @@ export class AppComponent {
   
   todos:ITodo[] = this.TodosService.getTodos
 
+  clearAll(){
+    this.TodosService.clearAllTodos()
+  }
+
 }

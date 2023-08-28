@@ -6,14 +6,19 @@ import { ITodo, ITodoForm } from '../types';
 })
 export class TodosService {
 
+  /**
+   * @todo - Todos (render the lists)
+   * @todoForm - Todo form (get value)
+   * @updateThiId - Edit todoId
+   */
   todos: ITodo[] = []
   todoForm: ITodoForm = {
     taskName: "",
     taskDescription: ""
   }
-  private isUpdate: boolean = false
+  private updateThisId: string = ""
 
-
+  // Get todos from local storage
   constructor() {
     const getTodos = localStorage.getItem("todos")
     if (getTodos) {
@@ -21,15 +26,12 @@ export class TodosService {
     }
   }
 
-  setIsUpdate(isUpdate: boolean): void {
-    this.isUpdate = isUpdate
-    this.getIsUpdate()
+  setUpdateId(todoId: string): void {
+    this.updateThisId = todoId
   }
 
-
-  getIsUpdate(): boolean {
-    console.log("ss", this.isUpdate)
-    return this.isUpdate
+  getUpdateId(): string {
+    return this.updateThisId
   }
 
   get getTodos(): ITodo[] {
@@ -40,30 +42,28 @@ export class TodosService {
     return this.todoForm
   }
 
- 
+  // clear all values from todo form
+  clearForm() {
+    this.todoForm.taskName = ""
+    this.todoForm.taskDescription = ""
+  }
 
-
-  clearForm(){
-    this.todoForm.taskName=""
-    this.todoForm.taskDescription=""
-}
-
-
+  // Delete a todo
   deleteTodo(id: string) {
     const findTodos = this.todos.findIndex(elm => elm.id === id)
     if (findTodos !== -1) {
       this.todos.splice(findTodos, 1)
-      localStorage.setItem('todos', JSON.stringify(this.todos))
+      localStorage.setItem('todos', JSON.stringify(this.todos)) // update in local storage
     }
   }
 
+  // Add new todo
   addTodo() {
-
-    if(!this.todoForm.taskName || !this.todoForm.taskName){
-      alert("Task name or task description cannot be empty")
+    // validation
+    if (!this.todoForm.taskName) {
+      alert("Task name cannot be empty")
       return
     }
-
     const newTodo: ITodo = {
       name: this.todoForm.taskName,
       description: this.todoForm.taskDescription,
@@ -71,19 +71,41 @@ export class TodosService {
     }
 
     this.todos.push(newTodo)
-    localStorage.setItem('todos', JSON.stringify(this.todos))
-
     this.todoForm.taskName = ""
     this.todoForm.taskDescription = ""
+
+    localStorage.setItem('todos', JSON.stringify(this.todos)) // update in local storage
   }
 
-
-  updateTodo(todoId: string){
+  // Call to set the Todo form to edit (update)
+  updateTodoForm(todoId: string) {
     const findTodo = this.todos.findIndex(elm => elm.id === todoId)
-    if(findTodo !== -1){
+    if (findTodo !== -1) {
       this.todoForm.taskName = this.todos[findTodo].name
       this.todoForm.taskDescription = this.todos[findTodo].description
     }
   }
 
+  // Update a todo
+  updateTodo() {
+    const findTodo = this.todos.findIndex(elm => elm.id === this.updateThisId)
+    if (findTodo !== -1) {
+      this.todos[findTodo].name = this.todoForm.taskName
+      this.todos[findTodo].description = this.todoForm.taskDescription
+      this.todoForm.taskName = ""
+      this.todoForm.taskDescription = ""
+      this.updateThisId = ""
+      localStorage.setItem('todos', JSON.stringify(this.todos)) // update in local storage
+    }
+  }
+
+
+  // Remove all todos
+  clearAllTodos() {
+    const isConfirmed = confirm('Are you sure you want to clear all the tasks')
+    if (!isConfirmed) return
+
+    this.todos.length = 0
+    localStorage.setItem('todos', JSON.stringify(this.todos)) // update in local storage
+  }
 }

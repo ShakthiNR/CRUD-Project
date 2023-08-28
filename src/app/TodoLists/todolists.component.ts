@@ -3,25 +3,26 @@ import { Component } from '@angular/core';
 import { ITodo } from '../types';
 
 @Component({
-    selector: "app-todo-lists",
-    templateUrl: "./todolists.component.html",
-    styleUrls: ["./todolists.component.css"]
+   selector: "app-todo-lists",
+   templateUrl: "./todolists.component.html",
+   styleUrls: ["./todolists.component.css"]
 })
 export class TodoListsComponent {
-    todoLists:ITodo[]
+   todoLists: ITodo[]
 
 
-    constructor(private TodosService:TodosService) {
-        this.todoLists = TodosService.todos
-     }
+   constructor(private TodosService: TodosService) {
+      this.todoLists = TodosService.todos
+   }
 
-     deleteTodo(todoId:string) {
-        this.TodosService.deleteTodo(todoId)
-     }
+   // For every operation we call fn in the TodosService
+   deleteTodo(todoId: string) {
+      this.TodosService.deleteTodo(todoId)
+   }
 
-     updateTodo(todoId:string) {
-        this.TodosService.updateTodo(todoId)
-        this.TodosService.setIsUpdate(true)
-     }
+   editTodo(todoId: string) {
+      this.TodosService.updateTodoForm(todoId)
+      this.TodosService.setUpdateId(todoId)
+   }
 
 }
