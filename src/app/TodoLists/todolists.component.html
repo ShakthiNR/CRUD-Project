@@ -1,14 +1,14 @@
-<div class="flex-center" *ngIf="todoLists.length">
+<div class="flex-center list-title" *ngIf="todoLists.length">
     <h2>List of tasks</h2>
 </div>
 
-<div  style="max-width: 80vh; margin:0 auto; padding: 1rem;" *ngIf="todoLists.length">
+<div class="list-content"  style="max-width: 80vh; margin:0 auto; padding: 1rem;" *ngIf="todoLists.length">
     <div class="flex-center" style="gap: 1rem; justify-content: flex-start; margin-bottom: 0.25rem;">
         <ng-content select=".todo-count"></ng-content>
         <ng-content select=".clear-btn"></ng-content>
     </div>
     
-    <div style="background-color: lightgrey; height: 60vh; overflow: scroll;" >
+    <div style="background-color: lightgrey; height: 60vh; overflow: auto;" >
         <div *ngFor="let todo of todoLists; let i = index">
             <div style="padding:0.5rem">
                 <span>{{ i +1 }})</span>

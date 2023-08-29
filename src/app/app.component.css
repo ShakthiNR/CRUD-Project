@@ -17,3 +17,32 @@
     background-color: lightgray;
     text-align: center;
 }
+
+.list-layout{
+    height: 85vh; 
+   
+}
+
+@media( width <600px){
+    .title{
+        font-size: 0.75rem;
+    }
+    
+   .list-layout{
+    height: 88vh; 
+
+}
+    .footer{
+        background-color: #fff;
+        font-weight: 600;
+        font-size: 0.75rem;
+    }
+
+
+
+    .clear-btn {
+        font-size: 12px;
+        padding: 0.15rem;
+    }
+   
+}

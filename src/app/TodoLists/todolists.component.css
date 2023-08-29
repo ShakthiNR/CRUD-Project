@@ -12,3 +12,13 @@
     color: blue ;
     cursor: pointer;
 }
+
+@media (width < 600px) {
+    .list-title{
+        font-size: 15px;
+    }
+
+    .list-content{
+        font-size: 15px;
+    }
+}

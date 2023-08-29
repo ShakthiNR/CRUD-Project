@@ -1,44 +1,71 @@
-.todo-form{
+.todo-form {
     margin: 1rem;
 }
 
-.todo-form input[type="text"]{
+.todo-form input[type="text"] {
     padding: 0.25rem;
     width: 20vw;
     border: none;
     font-size: 1rem;
-    letter-spacing: 1.5px;
+   
     word-spacing: 3px;
     border-bottom: 1px solid lightslategray;
     margin-right: 1rem;
 }
-.todo-form input[type="text"]:focus{
+
+.todo-form input[type="text"]:focus {
     outline: none;
     border-bottom: 2px solid lightslategray;
-    
+
 }
-.add-btn{
+
+.add-btn {
     padding: 0.25rem;
     border: none;
     background-color: darkmagenta;
-    color: white ;
+    color: white;
     margin-right: 1rem;
     cursor: pointer;
 }
 
-.add-btn:hover{
+.add-btn:hover {
     padding: 0.25rem;
     border: none;
     background-color: rgb(208, 18, 208);
-    color: white ;
+    color: white;
     margin-right: 1rem;
     cursor: pointer;
 }
 
-.clear-btn{
+.clear-btn {
     padding: 0.25rem;
     border: none;
     background-color: red;
-    color: white ;
+    color: white;
     cursor: pointer;
 }
+
+
+@media( width <900px) {
+    .todo-form input[type="text"] {
+        width: 35vw;
+       font-size: 14px;
+    }
+
+   
+}
+
+@media(600px < width <900px) {
+    .todo-form input[type="text"] {
+       font-size: 15px;
+    }
+
+    .add-btn {
+        font-size: 15px;
+    }
+
+    .add-btn:hover {
+        font-size: 15px;
+    }
+}
+

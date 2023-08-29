@@ -10,3 +10,9 @@
     justify-content: center;
     align-items: center;
 }
+
+@media(400px < width <600px){
+    .title{
+        font-size: 16px;
+    }
+}
