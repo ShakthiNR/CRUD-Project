@@ -19,6 +19,9 @@ export class AppComponent {
 
   clearAll(){
     this.TodosService.clearAllTodos()
+    this.TodosService.todoForm.taskName = ""
+    this.TodosService.todoForm.taskDescription = ""
+    this.TodosService.setUpdateId("")
   }
 
 }
