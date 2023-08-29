@@ -17,19 +17,6 @@ export class TodoFormComponent implements DoCheck {
 
     ngDoCheck(): void {
         if (this.TodosService.getUpdateId() !== this.isThisUpdateId) this.isThisUpdateId = this.TodosService.getUpdateId();
-        
-        
-
-    //     if (this.todos.length === 0) {
-    //         if (this.todoForm.taskName.trim() !== "")  this.todoForm.taskName = ""
-            
-    //         if (this.todoForm.taskDescription.trim() !== "")  this.todoForm.taskDescription = ""
-
-    //         if (this.isThisUpdateId !== "") {
-    //             this.TodosService.setUpdateId("");
-    //         }
-
-    //     }
      }
 
     // For every operation we call fn in the TodosService

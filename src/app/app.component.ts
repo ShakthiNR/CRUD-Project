@@ -8,7 +8,7 @@ import { ITodo } from './types';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  appTitle: string = 'Task Management';
+  appTitle: string = 'Task Manager';
 
   creator:string = 'Shakthi N R';
   copyright:string = '@2023'
