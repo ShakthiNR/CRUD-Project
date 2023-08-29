@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Donegal+One&family=Sedgwick+Ave+Display&display=swap');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: cursive, Sans-serif
+    font-family: 'Donegal One', serif;
 }
 
 .flex-center {
